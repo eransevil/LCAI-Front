@@ -1,0 +1,40 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "react-scripts test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "proxy": "http://localhost:5001",
+  "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "@reduxjs/toolkit": "^2.5.0",
+    "axios": "^1.7.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.28.1",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.3.5",
+    "web-vitals": "^2.1.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
