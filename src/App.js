@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom"; // שימוש ב-HashRouter
 import Navbar from "./components/Navbar";
 import "./index.css";
 import Login from "./pages/Login";
@@ -8,13 +8,19 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Files from "./pages/Files";
 import { verifyToken } from "./redux/authSlice";
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(verifyToken());
-  }, [dispatch]);
+    if (user) {
+      dispatch(verifyToken());
+    }
+    console.log("User state:", user); // לוגים לבדיקת מצב המשתמש
+    console.log("Environment:", process.env.NODE_ENV); // לוגים לבדיקת הסביבה
+  }, [dispatch, user]); // הוספת תלות ב-user
 
   return (
     <Router>
