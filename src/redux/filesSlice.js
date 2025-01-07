@@ -24,7 +24,7 @@ export const fetchFiles = createAsyncThunk(
 
 // פעולה אסינכרונית ל-upload קובץ
 export const uploadFile = createAsyncThunk(
-  "files/uploadFile",
+  "files/upload",
   async (file, { rejectWithValue }) => {
     try {
       const formData = new FormData();
