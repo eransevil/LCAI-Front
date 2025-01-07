@@ -21,6 +21,7 @@ const Signup = () => {
       setError("Passwords do not match");
       return;
     }
+
     try {
       await dispatch(
         signup({
