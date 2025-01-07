@@ -18,8 +18,6 @@ function App() {
     if (user) {
       dispatch(verifyToken());
     }
-    console.log("User state:", user); // לוגים לבדיקת מצב המשתמש
-    console.log("Environment:", process.env.NODE_ENV); // לוגים לבדיקת הסביבה
   }, [dispatch, user]); // הוספת תלות ב-user
 
   return (
