@@ -18,7 +18,7 @@ function App() {
     if (user) {
       dispatch(verifyToken());
     }
-  }, [dispatch, user]); // הוספת תלות ב-user
+  }, [dispatch]); // הוספת תלות ב-user
 
   return (
     <Router>
