@@ -30,12 +30,16 @@ export const uploadFile = createAsyncThunk(
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await axios.post("/api/files/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          // מכיוון שה-JWT נמצא בקוקיז, אין צורך להוסיף אותו בהגדרת Authorization
-        },
-      });
+      const response = await axios.post(
+        `${apiUrl}/api/files/upload`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            // מכיוון שה-JWT נמצא בקוקיז, אין צורך להוסיף אותו בהגדרת Authorization
+          },
+        }
+      );
 
       return response.data; // החזרת התגובה מהמשרת
     } catch (error) {
