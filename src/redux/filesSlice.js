@@ -36,7 +36,6 @@ export const uploadFile = createAsyncThunk(
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            // מכיוון שה-JWT נמצא בקוקיז, אין צורך להוסיף אותו בהגדרת Authorization
           },
         }
       );
