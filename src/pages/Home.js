@@ -95,14 +95,14 @@ const Home = () => {
             Together, we can create a world where AI drives energy efficiency,
             reduces waste, and protects our planet.
           </p>
-          <div className="mt-8">
-            {/* <a
+          {/* <div className="mt-8">
+            <a
               href="#contact"
               className="inline-block bg-green-600 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-green-800 transition"
             >
               Get In Touch
-            </a> */}
-          </div>
+            </a>
+          </div> */}
         </div>
       </section>
 
@@ -116,7 +116,7 @@ const Home = () => {
           </p>
           <div className="mt-8">
             <a
-              href="mailto:Amirshefy1@gmail.com"
+              href="mailto:contact@lcai.com"
               className="inline-block bg-green-600 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-green-800 transition"
             >
               Contact Us
