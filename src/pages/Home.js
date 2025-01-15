@@ -1,36 +1,51 @@
 import React from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { sendEmail, resetState } from "../redux/emailSlice";
 
 const Home = () => {
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const dispatch = useDispatch();
+  const { loading, success, error } = useSelector((state) => state.email);
+
+  const handleSendEmail = () => {
+    dispatch(sendEmail({ email, subject, message }));
+  };
+
+  const handleReset = () => {
+    dispatch(resetState());
+    setEmail("");
+    setSubject("");
+    setMessage("");
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-green-300 text-white py-24 px-6 sm:px-16 lg:px-24">
+      <section className="relative text-white py-24 px-6 sm:px-16 lg:px-24">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1515344905723-babc01aac23d?q=80&w=2976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-            opacity: 0.1,
-            zIndex: 200,
+            backgroundImage: "url('/hero.jpg')",
+            opacity: 0.9,
+            zIndex: 0,
           }}
         ></div>
-        <div className="absolute inset-0 bg-opacity-50 bg-gradient-to-r from-green-500 to-teal-500"></div>
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl font-extrabold leading-tight text-white sm:text-6xl">
-            Harnessing AI to Create a Sustainable Future
-          </h1>
-          <p className="mt-4 text-xl text-white sm:text-2xl">
-            At LCAI, we use artificial intelligence to optimize energy usage,
-            reduce waste, and protect our planet.
+          <img
+            src="/logo.png"
+            alt="logo"
+            height={100}
+            width={180}
+            className="mx-auto mb-6"
+          />
+          <p className="mt-4 text-2xl sm:text-3xl font-bold text-white shadow-lg">
+            Harnessing the power of Ai to revolutionize the way we measure
+            environmental impact
           </p>
-          <div className="mt-8">
-            <a
-              href="#about"
-              className="inline-block bg-green-600 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-green-700 transition"
-            >
-              Learn More
-            </a>
-          </div>
         </div>
       </section>
 
@@ -42,46 +57,8 @@ const Home = () => {
             LCAI leverages cutting-edge artificial intelligence technology to
             help businesses and individuals optimize energy consumption,
             minimize waste, and contribute to a greener planet. We believe AI
-            can make the world more sustainable, and we’re here to lead the way.
+            can make the world more sustainable, and we're here to lead the way.
           </p>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 bg-green-50">
-        <div className="max-w-7xl mx-auto px-6 sm:px-16">
-          <h2 className="text-4xl font-extrabold text-gray-800 text-center">
-            How We Help
-          </h2>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-              <h3 className="text-2xl font-semibold text-green-700">
-                AI-Powered Optimization
-              </h3>
-              <p className="mt-4 text-gray-600">
-                We analyze data and predict energy needs with AI to optimize
-                consumption and reduce waste.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-              <h3 className="text-2xl font-semibold text-green-700">
-                Sustainable Practices
-              </h3>
-              <p className="mt-4 text-gray-600">
-                We integrate AI-driven solutions that help businesses and
-                individuals adopt more energy-efficient practices.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-              <h3 className="text-2xl font-semibold text-green-700">
-                Carbon Footprint Reduction
-              </h3>
-              <p className="mt-4 text-gray-600">
-                Our AI models analyze patterns to help reduce carbon emissions
-                and ensure a greener future for all.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -95,35 +72,89 @@ const Home = () => {
             Together, we can create a world where AI drives energy efficiency,
             reduces waste, and protects our planet.
           </p>
-          {/* <div className="mt-8">
-            <a
-              href="#contact"
-              className="inline-block bg-green-600 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-green-800 transition"
-            >
-              Get In Touch
-            </a>
-          </div> */}
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-16 text-center">
-          <h2 className="text-4xl font-extrabold text-gray-800">Contact Us</h2>
-          <p className="mt-4 text-lg text-gray-600">
-            Have questions or want to learn more about how LCAI can help you?
-            Get in touch with us today.
-          </p>
-          <div className="mt-8">
-            <a
-              href="mailto:contact@lcai.com"
-              className="inline-block bg-green-600 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-green-800 transition"
-            >
-              Contact Us
-            </a>
-          </div>
+      {/* Contact Section - Now Full Width */}
+      <div className="w-full bg-gray-50">
+        <div className="w-full p-6">
+          <h2 className="text-2xl font-bold text-green-700 mb-4 text-center">
+            Send Us an Email
+          </h2>
+
+          {success ? (
+            <div className="w-full space-y-6 flex flex-col items-center justify-center py-8">
+              <div className="text-green-600 text-center">
+                <svg
+                  className="w-16 h-16 mb-4 mx-auto text-green-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <h3 className="text-xl font-semibold mb-2">
+                  Email Sent Successfully!
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Thank you for contacting us. We'll get back to you soon.
+                </p>
+                <button
+                  onClick={handleReset}
+                  className="bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition"
+                >
+                  Send Another Email
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="w-full space-y-4">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your Email"
+                className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+              />
+
+              <input
+                type="text"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                placeholder="Subject"
+                className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+              />
+
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Message"
+                className="w-full p-3 rounded-lg border border-gray-300 h-32 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+              />
+
+              <button
+                onClick={handleSendEmail}
+                disabled={loading}
+                className={`w-full bg-green-600 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+              >
+                {loading ? "Sending..." : "Send Email"}
+              </button>
+
+              {error && (
+                <p className="text-red-600 font-medium text-center">{error}</p>
+              )}
+            </div>
+          )}
         </div>
-      </section>
+      </div>
     </div>
   );
 };
