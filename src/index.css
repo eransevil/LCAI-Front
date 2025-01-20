@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 *,
 *::before,
 *::after {
@@ -17,4 +18,8 @@ body {
   .min-h-screen {
     flex-grow: 1;
   }
-  
+  @layer base {
+    body {
+      @apply font-sans;
+    }
+  }

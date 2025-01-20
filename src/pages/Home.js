@@ -38,12 +38,12 @@ const Home = () => {
           <img
             src="/logo.png"
             alt="logo"
-            height={100}
-            width={180}
+            height={250}
+            width={250}
             className="mx-auto mb-6"
           />
           <p className="mt-4 text-2xl sm:text-3xl font-bold text-white shadow-lg">
-            Harnessing the power of Ai to revolutionize the way we measure
+            Harnessing the power of AI to revolutionize the way we measure
             environmental impact
           </p>
         </div>
@@ -52,18 +52,18 @@ const Home = () => {
       {/* About Section */}
       <section id="about" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-16 text-center">
-          <h2 className="text-4xl font-extrabold text-gray-800">About LCAI</h2>
-          <p className="mt-4 text-lg text-gray-600">
-            LCAI leverages cutting-edge artificial intelligence technology to
-            help businesses and individuals optimize energy consumption,
-            minimize waste, and contribute to a greener planet. We believe AI
-            can make the world more sustainable, and we're here to lead the way.
+          <h2 className="text-4xl font-extrabold text-gray-800">About LCAi</h2>
+          <p className="mt-4 text-lg font-sans text-gray-600">
+            LCAs take months to complete and require extensive knowledge from
+            environmental consultants. The LCAi platform is powered by AI agents
+            and large language model, designed to conduct LCAs automatically for
+            any existing process.
           </p>
         </div>
       </section>
 
       {/* Call to Action Section */}
-      <section className="bg-green-700 text-white py-16 px-6 sm:px-16 lg:px-24">
+      <section className="bg-green-800 text-white py-16 px-6 sm:px-16 lg:px-24">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold">
             Join Us in Building a Sustainable Future
@@ -79,7 +79,7 @@ const Home = () => {
       <div className="w-full bg-gray-50">
         <div className="w-full p-6">
           <h2 className="text-2xl font-bold text-green-700 mb-4 text-center">
-            Send Us an Email
+            Contact Us
           </h2>
 
           {success ? (
@@ -141,7 +141,7 @@ const Home = () => {
               <button
                 onClick={handleSendEmail}
                 disabled={loading}
-                className={`w-full bg-green-600 text-white font-semibold py-3 rounded-lg hover:bg-green-700 transition ${
+                className={`w-full bg-green-700 text-white font-semibold py-3 rounded-lg hover:bg-green-800 transition ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
